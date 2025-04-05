@@ -34,9 +34,29 @@ glad_add_library(glad
     )
 
 # ------------------------------------------------------------------------------
+#       ImGui
+# ------------------------------------------------------------------------------
+    
+add_library(imgui)
+target_sources(imgui
+    PRIVATE
+    ${VENDOR_DIR}/imgui/imgui.h
+    ${VENDOR_DIR}/imgui/imgui.cpp
+    ${VENDOR_DIR}/imgui/imgui_demo.cpp
+    ${VENDOR_DIR}/imgui/imgui_tables.cpp
+    ${VENDOR_DIR}/imgui/imgui_draw.cpp
+    ${VENDOR_DIR}/imgui/imgui_widgets.cpp
+    ${VENDOR_DIR}/imgui/backends/imgui_impl_opengl3.cpp
+    ${VENDOR_DIR}/imgui/backends/imgui_impl_glfw.cpp
+    )
+target_include_directories(imgui PUBLIC ${VENDOR_DIR}/imgui)
+target_link_libraries(imgui PUBLIC glfw)
+target_link_libraries(imgui PUBLIC Opengl32.lib)
+
+# ------------------------------------------------------------------------------
 #       Hello-World
 # ------------------------------------------------------------------------------
 
 add_executable(Hello-World main.cpp)
 set_default_compile_options(Hello-World)
-target_link_libraries(Hello-World PUBLIC glfw glad)
+target_link_libraries(Hello-World PUBLIC glfw glad imgui)

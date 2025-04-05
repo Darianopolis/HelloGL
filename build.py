@@ -37,6 +37,7 @@ def dep(name, url, branch, dumb = False):
 
 dep("GLFW", "https://github.com/glfw/glfw.git", "master")
 dep("GLAD", "https://github.com/Dav1dde/glad.git", "glad2")
+dep("ImGui", "https://github.com/ocornut/imgui.git", "docking")
 
 # ------------------------------------------------------------------------------
 #       Configure / Build / Run
